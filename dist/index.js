@@ -43,13 +43,12 @@ var express_1 = __importDefault(require("express"));
 var axios_1 = __importDefault(require("axios"));
 var http_1 = __importDefault(require("http"));
 var cors_1 = __importDefault(require("cors"));
-var path_1 = __importDefault(require("path"));
 var app = express_1.default();
 var port = 3000;
 var CHUCK_NORRIS_API_BASE_URL = 'https://api.chucknorris.io';
 app.use(express_1.default.json());
 app.use(cors_1.default());
-app.use(express_1.default.static(path_1.default.join(__dirname, '../client/build')));
+// app.use(express.static(path.join(__dirname, '../client/build')));
 app.get('/jokes/random', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var category, data, error_1, defaultStatusCode, defaultErrorMessage;
     return __generator(this, function (_a) {

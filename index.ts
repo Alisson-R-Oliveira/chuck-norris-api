@@ -11,7 +11,7 @@ const CHUCK_NORRIS_API_BASE_URL = 'https://api.chucknorris.io'
 
 app.use(express.json())
 app.use(cors())
-app.use(express.static(path.join(__dirname, '../client/build')));
+// app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.get('/jokes/random', async (req, res) => {
     const category = req.query.category
