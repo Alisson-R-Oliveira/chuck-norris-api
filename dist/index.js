@@ -42,23 +42,30 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var axios_1 = __importDefault(require("axios"));
 var http_1 = __importDefault(require("http"));
+var cors_1 = __importDefault(require("cors"));
+var path_1 = __importDefault(require("path"));
 var app = express_1.default();
 var port = 3000;
 var CHUCK_NORRIS_API_BASE_URL = 'https://api.chucknorris.io';
 app.use(express_1.default.json());
+app.use(cors_1.default());
+app.use(express_1.default.static(path_1.default.join(__dirname, '../client/build')));
 app.get('/jokes/random', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var data, error_1, defaultStatusCode, defaultErrorMessage;
+    var category, data, error_1, defaultStatusCode, defaultErrorMessage;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, axios_1.default.get(CHUCK_NORRIS_API_BASE_URL + '/jokes/random')];
+                category = req.query.category;
+                _a.label = 1;
             case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, axios_1.default.get(category ? CHUCK_NORRIS_API_BASE_URL + "/jokes/random?category=" + category : CHUCK_NORRIS_API_BASE_URL + "/jokes/random")];
+            case 2:
                 data = (_a.sent()).data;
                 if (data)
                     res.send(data);
-                return [3 /*break*/, 3];
-            case 2:
+                return [3 /*break*/, 4];
+            case 3:
                 error_1 = _a.sent();
                 console.error(error_1);
                 defaultStatusCode = 500;
@@ -68,8 +75,8 @@ app.get('/jokes/random', function (req, res) { return __awaiter(void 0, void 0, 
                     defaultErrorMessage = error_1.response.data;
                 }
                 res.status(defaultStatusCode).send(new Error(defaultErrorMessage));
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
         }
     });
 }); });
@@ -101,15 +108,17 @@ app.get('/jokes/categories', function (req, res) { return __awaiter(void 0, void
     });
 }); });
 app.get('/jokes/search', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var term, data, error_3, defaultStatusCode, defaultErrorMessage;
+    var query, data, error_3, defaultStatusCode, defaultErrorMessage;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                term = req.query.term;
+                query = req.query.query;
+                if (!query)
+                    res.status(400).send(new Error('Missing term to filter.'));
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
-                return [4 /*yield*/, axios_1.default.get(CHUCK_NORRIS_API_BASE_URL + ("/jokes/search?query=" + term))];
+                return [4 /*yield*/, axios_1.default.get(CHUCK_NORRIS_API_BASE_URL + ("/jokes/search?query=" + query))];
             case 2:
                 data = (_a.sent()).data;
                 if (data)
