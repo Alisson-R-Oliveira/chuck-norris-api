@@ -5,19 +5,23 @@
     "builds": [
       {
         "src": "dist/index.js",
-        "use": "@vercel/node",
+        "use": "@now/node",
         "config": { "includeFiles": ["dist/**"] }
       },
       {
         "src": "client/build/**",
-        "use": "@vercel/static",
+        "use": "@now/static",
         "config": { "includeFiles": ["client/build/**"] }
       }
     ],
     "routes": [
-      {
-        "src": "/",
-        "dest": "client/build/index.html"
-      }
+        {
+            "src": "/",
+            "dest": "client/build/index.html"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "dist/index.js"
+        }
     ]
   }
