@@ -14,7 +14,7 @@
       }
     ],
     "routes": [
-        { "handle": "filesystem" },
+        { "handle": "filesystem" }, 
       {
         "src": "/jokes/(.*)",
         "dest": "build/index.js"
