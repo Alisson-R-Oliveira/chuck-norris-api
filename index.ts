@@ -1,8 +1,6 @@
 import express from 'express'
 import axios from 'axios'
-import http from 'http'
 import cors from 'cors'
-import path from 'path'
 import { Joke } from './interfaces'
 
 const app = express()
@@ -70,4 +68,8 @@ app.get('/jokes/search', async (req, res) => {
     }
 });
 
-http.createServer(app).listen(port)
+app.listen(port, () => {
+    console.log('Server started;');
+});
+  
+export default app;
