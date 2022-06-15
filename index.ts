@@ -1,7 +1,6 @@
 import express from 'express'
 import axios from 'axios'
 import cors from 'cors'
-import path from 'path'
 import { Joke } from './interfaces'
 
 const app = express()
@@ -68,7 +67,7 @@ app.get('/jokes/search', async (req, res) => {
     }
 });
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
     console.log('Server started;');
 });
   
