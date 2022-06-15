@@ -13,14 +13,14 @@
         "use": "@vercel/static"
       }
     ],
-    "redirects": [
+    "routes": [
       {
-        "source": "/jokes/(.*)",
-        "destination": "build/index.js"
+        "src": "/jokes/(.*)",
+        "dest": "build/index.js"
       },
       {
-        "source": "/",
-        "destination": "client/build/index.html"
+        "src": "/",
+        "dest": "client/build/index.html"
       }
     ]
 }
