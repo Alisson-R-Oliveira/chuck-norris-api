@@ -21,10 +21,6 @@
       {
         "source": "/",
         "destination": "client/build/index.html"
-      },
-      {
-        "source": "/(.+)",
-        "destination": "client/build/index.html"
       }
     ]
 }
