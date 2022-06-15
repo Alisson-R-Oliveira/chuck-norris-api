@@ -1,19 +1,31 @@
 {
     "version": 2,
+    "env": {
+    },
     "builds": [
       {
         "src": "dist/index.js",
-        "use": "@now/node"
+        "use": "@vercel/node",
+        "config": { "includeFiles": ["dist/**"] }
+      },
+      {
+        "src": "client/build/**",
+        "use": "@vercel/static",
+        "config": { "includeFiles": ["client/build/**"] }
       }
     ],
     "routes": [
-        {
-            "src": "/",
-            "dest": "client/build/index.html"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "dist/index.js"
-        }
+      {
+        "src": "/jokes/(.*)",
+        "dest": "dist/index.js"
+      },
+      {
+        "src": "/",
+        "dest": "client/build/index.html"
+      },
+      {
+        "src": "/(.+)",
+        "dest": "client/build/$1"
+      }
     ]
-  }
+}
