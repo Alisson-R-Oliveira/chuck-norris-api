@@ -9,7 +9,7 @@ export const Tabs: FC<TabsProps> = ({ openTab, setOpenTab }) => {
     return (
         <div className="flex flex-wrap">
             <div className="w-full">
-                <ul className="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row" role="tablist">
+                <ul className="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row" role="tablist" id='tabs-menu'>
                     <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
                         <a 
                             className={

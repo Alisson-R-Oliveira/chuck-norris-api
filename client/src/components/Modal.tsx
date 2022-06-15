@@ -1,4 +1,4 @@
-import { Fragment, useRef, useState, FC } from 'react'
+import { Fragment, useRef, FC } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { ExclamationIcon } from '@heroicons/react/outline'
 
