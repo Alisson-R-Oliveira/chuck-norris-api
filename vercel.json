@@ -10,8 +10,7 @@
       },
       {
         "src": "client/build/**",
-        "use": "@vercel/static",
-        "config": { "includeFiles": ["client/build/**"] }
+        "use": "@vercel/static"
       }
     ],
     "routes": [
