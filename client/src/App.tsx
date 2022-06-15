@@ -7,7 +7,7 @@ import { RefreshIcon } from '@heroicons/react/solid'
 import { getRandomArbitrary, removeDiacritics } from './utils'
 import { Modal } from './components/Modal'
 
-axios.defaults.baseURL = 'http://localhost:3000'
+axios.defaults.baseURL = 'https://chuck-norris-api-psi.vercel.app'
 
 interface Joke {
     created_at: string
