@@ -15,12 +15,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const axios_1 = __importDefault(require("axios"));
 const cors_1 = __importDefault(require("cors"));
+const path_1 = __importDefault(require("path"));
 const app = express_1.default();
 const port = 3000;
 const CHUCK_NORRIS_API_BASE_URL = 'https://api.chucknorris.io';
 app.use(express_1.default.json());
 app.use(cors_1.default());
-// app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express_1.default.static(path_1.default.join(__dirname, '../client/build')));
+app.get('/', (req, res) => {
+    res.sendFile(path_1.default.join(__dirname, '..', 'client', 'build', 'index.html'));
+});
 app.get('/jokes/random', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const category = req.query.category;
     try {

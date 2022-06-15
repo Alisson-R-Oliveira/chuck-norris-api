@@ -1,6 +1,7 @@
 import express from 'express'
 import axios from 'axios'
 import cors from 'cors'
+import path from 'path'
 import { Joke } from './interfaces'
 
 const app = express()
@@ -9,7 +10,11 @@ const CHUCK_NORRIS_API_BASE_URL = 'https://api.chucknorris.io'
 
 app.use(express.json())
 app.use(cors())
-// app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, '../client/build')))
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '..' , 'client', 'build', 'index.html'))
+})
 
 app.get('/jokes/random', async (req, res) => {
     const category = req.query.category
