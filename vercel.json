@@ -1,17 +1,9 @@
 {
     "version": 2,
-    "env": {
-    },
     "builds": [
       {
         "src": "dist/index.js",
-        "use": "@now/node",
-        "config": { "includeFiles": ["dist/**"] }
-      },
-      {
-        "src": "client/build/**",
-        "use": "@vercel/static",
-        "config": { "includeFiles": ["client/build/**"] }
+        "use": "@now/node"
       }
     ],
     "routes": [
